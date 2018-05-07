@@ -55,7 +55,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#retiradas">Retiradas</a></li>
-					<li><a href="#encomendas">Encomendas</a></li>
+					<li><a href="#pedidos">Pedidos</a></li>
 					<li><a href="index.html" class="btn btn-blue">Sair</a></li>
 				</ul>
 			</div>
@@ -79,50 +79,37 @@
 		</div>
 	</header>
 	
-	<section id="retiradas" class="section section-padded">
-		<div class="container">
-			<div class="row services">
-                <div class="row text-center title">
-                    <h3>Retiradas</h3>
-                </div>
-				<div class="col-md-6">
-					<h4>Solicitar retirada</h4>
-                    
-                    <form action="" class="popup-form">
-                        <input type="text" id="retirada-medicamento" class="form-control" placeholder="Nome do medicamento">
-                        <input type="text" id="retirada-endereco" class="form-control" placeholder="Endereço para retirada">
-                        <input type="text" id="retirada-tratar-com" class="form-control" placeholder="Tratar com:">
-
-                        <input type="button" onclick="adicionarRetirada()" class="btn btn-blue" value="Solicitar" />
-                    </form>
-				</div>
-				<div class="col-md-6">
-                    <h4>Lista de solicitações</h4>
-                    <br/><br/>
-					<ul id="lista-retiradas" class="list-group">
-                    </ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="encomendas" class="section section-padded">
+	<section id="pedidos" class="section section-padded">
 			<div class="container">
 				<div class="row services">
 					<div class="row services">
 						<div class="row text-center title">
-							<h3>Encomendas</h3>
+							<h3>Pedidos</h3>
 						</div>
 						<div class="col-md-6">
-							<h4>Adicionar remédio</h4>
+							<h4>Novo pedido</h4>
 							<form action="" class="popup-form">
-								<input type="text" id="encomenda-medicamento" class="form-control" placeholder="Nome do medicamento">
-								<input type="text" id="encomenda-endereco" class="form-control" placeholder="Endereço de entrega">
-		
+								<select id="encomenda-remedios" class="form-control">
+									<option>Selecione o medicamento</option>
+									<option>Aspirana</option>
+									<option>Amoxicilina</option>
+									<option>Clordiazepóxido</option>
+									<option>Clonazepam</option>
+								</select>
+								<label class="form-control">
+									Valor: R$ 5,00
+								</label>
+
+								<input type="number" id="encomenda-quantidade" class="form-control" placeholder="Quantidade">
+								<label class="form-control">
+									Valor total: R$ 100,00
+								</label>
+
 								<input type="button" onclick="adicionarEncomenda()" class="btn btn-blue" value="Solicitar"/>
 							</form>
 						</div>
 						<div class="col-md-6">
-							<h4>Lista de Remédios</h4>
+							<h4>Lista de pedidos</h4>
 							<br/><br/>
 							<div id="lista-encomendas" class="list-group">
 							</div>
@@ -131,6 +118,39 @@
 				</div>
 			</div>
 	</section>
+
+	<section id="retiradas" class="section section-padded">
+		<div class="container">
+			<div class="row services">
+				<div class="row text-center title">
+					<h3>Retiradas</h3>
+				</div>
+				<div class="col-md-6">
+					<h4>Solicitar retirada</h4>
+					
+					<form action="" class="popup-form">
+						<input type="text" id="retirada-medicamento" class="form-control" placeholder="Nome do medicamento">
+						<input type="text" id="retirada-endereco" class="form-control" placeholder="Endereço para retirada">
+						<label>Receita:
+							<input type="file" id="retirada-anexoreceita" class="form-control" placeholder="Receita" accept="image/*" />
+						</label>
+						<label>Medicamento:
+							<input type="file" id="retirada-anexomedicamento" class="form-control" placeholder="Foto medicamento" accept="image/*" />
+						</label>
+	
+						<input type="button" onclick="adicionarRetirada()" class="btn btn-blue" value="Solicitar" />
+					</form>
+				</div>
+				<div class="col-md-6">
+					<h4>Lista de solicitações</h4>
+					<br/><br/>
+					<ul id="lista-retiradas" class="list-group">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<footer id="horario">
 		<div class="container">
 			<div class="row bottom-footer text-center-mobile">

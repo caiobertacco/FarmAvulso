@@ -140,10 +140,17 @@
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
 				<h3 class="white">Inscrever-se</h3>
 				<form action="client.html" class="popup-form">
-					<input type="text" class="form-control form-white" placeholder="Nome completo">
-					<input type="text" class="form-control form-white" placeholder="Email">
-                    <input type="text" class="form-control form-white" placeholder="Telefone/Celular">
-                    <input type="text" class="form-control form-white" placeholder="CEP">
+					<label class="radio-inline">
+						<input type="radio" name="tpCliente" id="tpCli" value="pj"> Pessoa Jurídica
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="tpCliente" id="tpCli" value="pf"> Pessoa Física
+					</label>
+					<input type="text" class="form-control form-white" placeholder="CPF/CNPJ" id="documento"/>
+					<input type="text" class="form-control form-white" placeholder="Nome" id="nome" />
+					<input type="text" class="form-control form-white" placeholder="Telefone" id="telefone" />
+					<input type="text" class="form-control form-white" placeholder="Celular" id="celular" />
+					<input type="text" class="form-control form-white" placeholder="Endereço" id="endereco" />
                     
 					<button type="submit" class="btn btn-submit">Cadastrar</button>
 				</form>
