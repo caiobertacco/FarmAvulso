@@ -1,0 +1,155 @@
+<!-- <div class="preloader">
+    <img src="img/loader.gif" alt="Preloader image">
+</div> -->
+
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home"><img src="img/logo.png" data-active-url="img/logo-active.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right main-nav">
+                <li><a href="#retiradas" ng-show="user.tpCli == 0">Retiradas</a></li>
+                <li><a href="#pedidos" ng-show="user.tpCli == 1">Pedidos</a></li>
+                <li><a href ng-click="goHome()"><u>Sair</u></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="client" id="intro">
+    <div class="layerHeader">
+    <div class="container">
+        <div class="table">
+            <div class="header-text">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="blue white">{{ user.nome }}{{ user.tpCli == 0 ? " | Pontos: " + user.pontos : ""}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</header>
+
+<section id="pedidos" class="section section-padded" ng-show="user.tpCli == 1">
+        <div class="container">
+            <div class="row services">
+                <div class="row services">
+                    <div class="row text-center title">
+                        <h3>Pedidos</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Novo pedido</h4>
+                        <form action="" class="popup-form">
+                            <select id="encomenda-remedios" 
+                                ng-init="medicamento = medicamentos[0]"
+                                ng-model="medicamento" 
+                                ng-options="item.nome for item in medicamentos" class="form-control">
+                            </select>
+                            <label class="form-control" ng-show="medicamento != undefined && medicamento.id > 0">
+                                Valor: R$ {{ medicamento.valor }}
+                            </label>
+                            
+                            <input type="number" ng-model="pedido.quantidade" ng-show="medicamento != undefined && medicamento.id > 0" class="form-control" placeholder="Quantidade">
+                            <label class="form-control" ng-show="medicamento.valor != undefined && pedido.quantidade != undefined">
+                                Valor total: R$ {{ medicamento.valor != undefined && pedido.quantidade != undefined ? pedido.quantidade * medicamento.valor : "" }}
+                            </label>
+
+                            <input type="button" ng-click="adicionar()" ng-show="medicamento != undefined && medicamento.id > 0" class="btn btn-blue" value="Solicitar"/>
+                        </form>
+                    </div>
+                    <div class="col-md-6" ng-show="pedidos.length > 0">
+                        <h4>Lista de pedidos</h4>
+                        <br/><br/>
+                        <table class="table">
+                            <tr>
+                                <th>Medicamento</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                                <th>Entrega</th>
+                            </tr>
+                            <tr ng-repeat="pedido in pedidos">
+                                <td>{{ pedido.medicamento.nome }}</td>
+                                <td>{{ pedido.quantidade }}</td>
+                                <td>{{ pedido.quantidade * pedido.medicamento.valor }}</td>
+                                <td>30/05/2018</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="retiradas" class="section section-padded" ng-show="user.tpCli == 0">
+    <div class="container">
+        <div class="row services">
+            <div class="row text-center title">
+                <h3>Retiradas</h3>
+            </div>
+            <div class="col-md-6">
+                <h4>Solicitar retirada</h4>
+                
+                <form action="" class="popup-form">
+                    <input type="text" ng-model="retirada.medicamento" class="form-control" placeholder="Nome do medicamento">
+                    <input type="number" ng-model="retirada.quantidade" ng-show="retirada.medicamento != undefined" class="form-control" placeholder="Quantidade">
+                    <label ng-show="retirada.medicamento != undefined">Foto da receita:
+                        <input type="file" ng-model="retirada.img.receita" class="form-control" placeholder="Receita" accept="image/*" />
+                    </label>
+                    <label ng-show="retirada.medicamento != undefined">Foto do medicamento:
+                        <input type="file" ng-model="retirada.img.medicamento" class="form-control" placeholder="Foto medicamento" accept="image/*" />
+                    </label>
+
+                    <input type="button" ng-show="retirada.medicamento != undefined" ng-click="adicionar()" class="btn btn-blue" value="Solicitar" />
+                </form>
+            </div>
+            <div class="col-md-6" ng-show="retiradas.length > 0">
+                    <h4>Lista de retiradas</h4>
+                    <br/><br/>
+                    <table class="table">
+                        <tr>
+                            <th>Medicamento</th>
+                            <th>Quantidade</th>
+                            <th>Entrega</th>
+                        </tr>
+                        <tr ng-repeat="retirada in retiradas">
+                            <td>{{ retirada.medicamento }}</td>
+                            <td>{{ retirada.quantidade }}</td>
+                            <td>30/05/2018</td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+    </div>
+</section>
+
+<footer id="horario">
+    <div class="container">
+        <div class="row bottom-footer text-center-mobile">
+            <div class="col-sm-8">
+                <p>&copy; 2015 Todos os disreitos reservados. Powered by <a href="#intro">Social Remedy</a></p>
+            </div>
+            <div class="col-sm-4 text-right text-center-mobile">
+                <ul class="social-footer">
+                    <li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="http://www.twitter.com/codrops"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Holder for mobile navigation -->
+<div class="mobile-nav">
+    <ul>
+    </ul>
+    <a href="#" class="close-link"><i class="arrow_up"></i></a>
+</div>

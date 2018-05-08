@@ -23,7 +23,7 @@ body {
 }
 /* Preloader */
 
-.preloader {
+/* .preloader {
 	position: fixed;
 	z-index: 9999;
 	width: 100%;
@@ -40,9 +40,9 @@ body {
 .preloader div {
 	display: none;
 	/* Preload the Second Pricing Image */
-	background: url(../img/pricing2.jpg) no-repeat 9999px 9999px;
+	/* background: url(../img/pricing2.jpg) no-repeat 9999px 9999px;
 	background-position: 9999px 9999px;
-}
+}  */
 
 /* Typography */
 
@@ -199,7 +199,7 @@ nav.navbar-fixed-top {
 	top: 0;
 	padding: 25px 0;
 	opacity: 0;
-	background: white;
+	background: #121b43;
 	box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -1032,7 +1032,7 @@ footer .social-footer li:hover a {
 }
 
 .gray {
-    color: #FF72B1;
+    color: #578b8e;
 }
 
 .gray-bg {
@@ -1040,7 +1040,7 @@ footer .social-footer li:hover a {
 }
 
 .blue {
-	color: #00a8ff;
+	color: #7ec4c7;
 }
 
 .blue-bg {
